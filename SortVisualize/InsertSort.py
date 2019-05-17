@@ -20,5 +20,5 @@ for i in range(len(r.rectangleList)):
 		if r.rectangleList[j].value < r.rectangleList[j-1].value:
 			r.swap(j, j-1)
 		else:
-			continue			
+			break			
 		

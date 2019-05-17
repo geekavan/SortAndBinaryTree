@@ -159,3 +159,22 @@ class Tree():
 		if root.fatherNode:
 			root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "postorder")
 		return postorderResult
+		
+	'''
+	按层遍历，使用队列
+	'''
+	def levelorder(self, root):
+		levelorderResult = []
+		queue = [root]
+		while queue:
+			temp = queue.pop(0)
+			if temp!=None:
+				if isinstance(temp, Node):
+					# 只要访问了temp.value,我们要flicker一下
+					temp.flicker(background = self.getTreeNdarray(), title = "levelorder")
+					queue.append(temp.value)
+					queue.append(temp.leftNode)
+					queue.append(temp.rightNode)
+				else:
+					levelorderResult.append(temp)
+		return levelorderResult

@@ -12,11 +12,12 @@ for x in treeStr[1:-1].split(","):
 		treeList.append(int(x))
 	else:
 		treeList.append(None)
-# treeList = [11,28,37,4,5,63,None,None,7,45,None,15,None,None,None]
 tree = Tree(background,treeList, 0, 0, 800, 300)
 if orderWay==0:
 	tree.preorder(tree.nodeList[0])
 elif orderWay==1:
 	tree.inorder(tree.nodeList[0])
-else:
+elif orderWay==2:
 	tree.postorder(tree.nodeList[0])
+else:
+	tree.levelorder(tree.nodeList[0])

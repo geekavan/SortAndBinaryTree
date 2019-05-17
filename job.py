@@ -77,12 +77,13 @@ entryForTreeStr.place(x = 300, y = 100)
 # 建立单选框，用于选择二叉树的遍历方式
 v = tk.IntVar()
 v.set(0)
-radiobuttonForTraversalWayPreorder =tk.Radiobutton(window,variable = v,text = 'preorder',value = 0).place(x=300, y = 200)
-radiobuttonForTraversalWayInorder =tk.Radiobutton(window,variable = v,text = 'inorder',value = 1).place(x=300, y = 300)
-radiobuttonForTraversalWayPostorder =tk.Radiobutton(window,variable = v,text = 'postorder',value = 2).place(x=300, y = 400)
+radiobuttonForTraversalWayPreorder =tk.Radiobutton(window,variable = v,text = 'preorder',value = 0).place(x=300, y = 160)
+radiobuttonForTraversalWayInorder =tk.Radiobutton(window,variable = v,text = 'inorder',value = 1).place(x=300, y = 230)
+radiobuttonForTraversalWayPostorder =tk.Radiobutton(window,variable = v,text = 'postorder',value = 2).place(x=300, y = 300)
+radiobuttonForTraversalWayLevelorder =tk.Radiobutton(window,variable = v,text = 'levelorder',value = 3).place(x=300, y = 370)
 # 建立按钮，用于确认二叉树的相关输入
 buttonForTreeInputConfirm = tk.Button(window, text='Confirm',font=('Arial', 12), width=13, height=2, command=treeTraversal)
-buttonForTreeInputConfirm.place(x=300, y = 500)
+buttonForTreeInputConfirm.place(x=300, y = 450)
 # 二叉树部分结束
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -96,19 +97,26 @@ def selectSort2():
 
 def insertSort2():
 	os.system("python ./SortVisualize/InsertSort.py" + " " + entryForSortStr.get())
+
+def shellSort2():
+	os.system("python ./SortVisualize/ShellSort.py" + " " + entryForSortStr.get())
+	
 # 建立输入框对象，用于输入排序string
 entryForSortStr = tk.Entry(window,width = 60)
-entryForSortStr.insert('end',"[9,8,11,6,22,15,5,3]")
-entryForSortStr.place(x = 500, y = 200)
+entryForSortStr.insert('end',"[5,9,4,3,10,6,8,7,1,2,11]")
+entryForSortStr.place(x = 500, y = 150)
 
 
 buttonForBubbleSort2 = tk.Button(window, text='BubbleSort',font=('Arial', 12), width=13, height=2, command=bubbleSort2)
-buttonForBubbleSort2.place(x = 500,y=270)
+buttonForBubbleSort2.place(x = 500,y=190)
 
 buttonForSelectSort2 = tk.Button(window, text='SelectSort',font=('Arial', 12), width=13, height=2, command=selectSort2)
-buttonForSelectSort2.place(x = 500,y=340)
+buttonForSelectSort2.place(x = 500,y=250)
 
 buttonForInsertSort2 = tk.Button(window, text='InsertSort',font=('Arial', 12), width=13, height=2, command=insertSort2)
-buttonForInsertSort2.place(x = 500,y=410)
+buttonForInsertSort2.place(x = 500,y=310)
+
+buttonForShellSort2 = tk.Button(window, text='ShellSort',font=('Arial', 12), width=13, height=2, command=shellSort2)
+buttonForShellSort2.place(x = 500,y=370)
 
 window.mainloop()

@@ -10,7 +10,10 @@ r = DataSeq("InsertSort", np.full((600,1100,3),255, np.uint8),sys.argv[1], 0,0,1
 length = len(r.rectangleList)//2
 # 自己设定的色盘
 colorList = [(0,255,0),(255,255,0),(255,0,255),(0,255,255),(127,127,0),(127,0,127),(0,127,127),(127,127,255),(127,255,127),(255,127,127),(64,64,127),(64,127,64),(127,64,64),(32,32,255),(32,255,32),(255,32,32)]
-		
+if(length > len(colorList)):
+	print("要求排序的数字个数，大于已经设定的色盘长度，请在./SortVisualize/ShellSort.py中增加色盘长度")
+	exit()
+	
 while length > 0:
 	# 同组的进行染色
 	for i in range(length):
