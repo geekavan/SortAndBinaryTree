@@ -118,12 +118,9 @@ class Tree():
 		# 只要访问了root.value,我们要flicker一下
 		root.flicker(background = self.getTreeNdarray(), title = "preorder")
 		preorderResult += self.preorder(root.leftNode)
-		# if not root.leftNode: 
-			# root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "preorder")
 		preorderResult +=self.preorder(root.rightNode)
-		# if not root.rightNode: 
-			# root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "preorder")
-		root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "preorder")
+		if root.fatherNode:
+			root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "preorder")
 		return preorderResult
 	'''
 	中序遍历，使用递归方式
@@ -140,7 +137,8 @@ class Tree():
 		root.flicker(background = self.getTreeNdarray(), title = "inorder")
 		inorderResult += self.inorder(root.rightNode)
 		# return 都是访问父节点，所以ringShow父节点
-		root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "inorder")
+		if root.fatherNode:
+			root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "inorder")
 		return inorderResult
 	
 	'''
@@ -158,5 +156,6 @@ class Tree():
 		# 只要访问了root.value,我们要flicker一下
 		root.flicker(background = self.getTreeNdarray(), title = "postorder")
 		# return 都是访问父节点，所以ringShow父节点
-		root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "postorder")
+		if root.fatherNode:
+			root.fatherNode.ringShow(background = self.getTreeNdarray(), title = "postorder")
 		return postorderResult
