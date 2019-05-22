@@ -4,7 +4,6 @@ from Rectangle import Rectangle
 import numpy as np
 import sys
 
-r = DataSeq("MergeSort", np.full((600,1100,3),255, np.uint8),sys.argv[1], 0,0,1100,600)
 def mergeSort(array):
 	return divide(array)
 		
@@ -68,7 +67,6 @@ def conquer(leftList, rightList):
 		cv2.waitKey(1000)
 		result.append(rightList.pop(0))
 		num = num + 1
-	print([x.value for x in result])
 	# 恢复蓝色
 	for i in range(len(result)):
 		result[i].color = r.rectangleColorDefault
@@ -80,4 +78,4 @@ def conquer(leftList, rightList):
 	
 if __name__=="__main__":
 	r = DataSeq("MergeSort", np.full((600,1100,3),255, np.uint8),sys.argv[1], 0,0,1100,600)
-	print([x.value for x in mergeSort(r.rectangleList)])
+	mergeSort(r.rectangleList)
