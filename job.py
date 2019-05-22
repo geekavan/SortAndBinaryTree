@@ -100,6 +100,9 @@ def insertSort2():
 
 def shellSort2():
 	os.system("python ./SortVisualize/ShellSort.py" + " " + entryForSortStr.get())
+
+def mergeSort2():
+	os.system("python ./SortVisualize/MergeSort.py" + " " + entryForSortStr.get())
 	
 # 建立输入框对象，用于输入排序string
 entryForSortStr = tk.Entry(window,width = 60)
@@ -118,5 +121,8 @@ buttonForInsertSort2.place(x = 500,y=310)
 
 buttonForShellSort2 = tk.Button(window, text='ShellSort',font=('Arial', 12), width=13, height=2, command=shellSort2)
 buttonForShellSort2.place(x = 500,y=370)
+
+buttonForMergeSort2 = tk.Button(window, text='MergeSort',font=('Arial', 12), width=13, height=2, command=mergeSort2)
+buttonForMergeSort2.place(x = 500,y=430)
 
 window.mainloop()
