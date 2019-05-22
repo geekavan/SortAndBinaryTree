@@ -38,9 +38,14 @@ class Rectangle():
 	def xoFrom(self, xoFrom):
 		self.__xoFrom = xoFrom
 		self.updateRectangleNdarray()
+		
 	@property
 	def yoFrom(self):
 		return self.__yoFrom
+		
+	@yoFrom.setter
+	def yoFrom(self, yoFrom):
+		self.__yoFrom = yoFrom
 		
 	@property
 	def width(self):

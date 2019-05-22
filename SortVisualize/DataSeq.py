@@ -14,6 +14,10 @@ class DataSeq():
 		self.__yoFrom = yoFrom
 		self.__xoTo = xoTo
 		self.__yoTo = yoTo
+		# 为了让最左边的柱子不挨着图片边缘图片中而加入横坐标的偏移量shift
+		self.__shift = 50
+		# 各个柱体之间的间隔
+		self.__interval = 20
 		self.updateXCoordinate()
 	@property
 	def title(self):
@@ -36,19 +40,27 @@ class DataSeq():
 		return self.__xoTo
 	
 	@property
+	def yoTo(self):
+		return self.__yoTo
+	
+	@property
+	def shift(self):
+		return self.__shift
+	
+	@property
+	def interval(self):
+		return self.__interval
+		
+	@property
 	def rectangleList(self):
 		return self.__rectangleList
 	
 	def updateXCoordinate(self):
-		# 为了让最左边的柱子不挨着图片边缘图片中而加入横坐标的偏移量shift
-		shift = 50
-		# 各个柱体之间的间隔
-		interval = 20
-		if (self.xoFrom+(len(self.rectangleList)-1)*(interval + self.rectangleList[0].width) + shift) > self.xoTo:
+		if (self.xoFrom+(len(self.rectangleList)-1)*(self.interval + self.rectangleList[0].width) + self.shift) > self.xoTo:
 			print("输入数据过多，请减少输入数据的个数")
 			exit()
 		for i in range(len(self.rectangleList)):
-			self.rectangleList[i].xoFrom = self.xoFrom+ i*(interval + self.rectangleList[i].width) + shift
+			self.rectangleList[i].xoFrom = self.xoFrom+ i*(self.interval + self.rectangleList[i].width) + self.shift
 			# 更新坐标后，重新计算rectangleNdarray
 			self.rectangleList[i].updateRectangleNdarray()
 			
@@ -76,7 +88,6 @@ class DataSeq():
 		self.visualize()
 		
 		
-	# def setColor(self, i, j):
 	# 用于显示现在的全部self.data
 	def visualize(self):
 		img = self.background
@@ -86,7 +97,5 @@ class DataSeq():
 		cv2.imshow(self.title, img)
 		cv2.waitKey(1000)
 		return img
-	
-	
 	
 
