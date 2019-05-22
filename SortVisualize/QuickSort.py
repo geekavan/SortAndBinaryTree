@@ -59,7 +59,6 @@ def conquer(array, leftIndex, rightIndex):
 	
 if __name__ =="__main__":
 	r = DataSeq("QuickSort", np.full((600,1100,3),255, np.uint8),sys.argv[1], 0,0,1100,600)
-	# print([x.value for x in quickSort(r.rectangleList)])
 	quickSort(r.rectangleList)
 	
 	
