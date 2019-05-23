@@ -79,7 +79,12 @@ class Node():
 	@property
 	def nodeNdarray(self):
 		return self.__nodeNdarray
-	
+	# 用于已经排序好的数据染色
+	def giveRedColor(self):
+		self.__nodeNdarray = cv2.circle(self.__background.copy(), (int(self.xo), int(self.yo)), self.r, (0,0,255), -1)
+		# 此中的参数-10和+5是为了看起来有更好的视觉效果而经测试选定的
+		self.__nodeNdarray = cv2.putText(self.__nodeNdarray.copy(), str(self.value), (int(self.xo-10), int(self.yo+5)), cv2.FONT_HERSHEY_SIMPLEX , 0.5, (0, 0, 0), 2)
+		
 	# 用于计算更改xo,yo后的nodeNdarray
 	def caculateNodeNdarray(self):
 		self.__nodeNdarray = cv2.circle(self.__background.copy(), (int(self.xo), int(self.yo)), self.r, (0,0,0), self.thickness)
@@ -93,6 +98,7 @@ class Node():
 		cv2.waitKey(time)
 		return ringNdarray
 		
+			
 	# 用于两个node周边的显示
 	def ringShow2(self, Node, background, title,  time=800):
 		ringNdarray = cv2.circle(background.copy(), (int(self.xo),int(self.yo)), self.r+self.thickness, (0,0,255), 5)

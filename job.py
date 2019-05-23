@@ -107,6 +107,9 @@ def mergeSort2():
 def quickSort2():
 	os.system("python ./SortVisualize/QuickSort.py" + " " + entryForSortStr.get())
 	
+def heapSort2():
+	os.system("python ./SortVisualize/HeapSort.py" + " " + entryForSortStr.get())
+	
 # 建立输入框对象，用于输入排序string
 entryForSortStr = tk.Entry(window,width = 60)
 entryForSortStr.insert('end',"[5,9,4,3,10,6,8,7,1,2,11]")
@@ -130,5 +133,8 @@ buttonForMergeSort2.place(x = 500,y=430)
 
 buttonForQuickSort2 = tk.Button(window, text='QuickSort',font=('Arial', 12), width=13, height=2, command=quickSort2)
 buttonForQuickSort2.place(x = 500,y=490)
+
+buttonForHeapSort2 = tk.Button(window, text='HeapSort',font=('Arial', 12), width=13, height=2, command=heapSort2)
+buttonForHeapSort2.place(x = 500,y=550)
 
 window.mainloop()
