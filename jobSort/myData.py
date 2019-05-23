@@ -6,6 +6,7 @@ import cv2
 
 class DataSeq:
 	# 先定义好各个颜色的三原色参数值，后边直接调用如self.WHITE
+	# (蓝色参数，绿色参数， 红色参数)
     WHITE = (255,255,255)
     RED = (0,0,255)
     BLACK = (0,0,0)
@@ -15,7 +16,7 @@ class DataSeq:
     def __init__(self, Length, time_interval=1, 
                                 sort_title="Figure"):
         self.data = [x for x in range(Length)]
-			# 随机打乱
+		# 随机打乱
         self.Shuffle()
         self.length = Length
 
@@ -24,8 +25,8 @@ class DataSeq:
 		# 把参数sort_title赋值给成员变量self.sort_title
         self.SetSortType(sort_title)
         self.Getfigure()
+		# 初始化时间
         self.InitTime()
-		
         self.Visualize()
 
     def InitTime(self):
@@ -58,9 +59,11 @@ class DataSeq:
 
     def Getfigure(self):
         _bar_width = 5
+		# 这是图片的numpy.ndarray,最后一维为3维，为颜色的维数
         figure = np.full((self.length*_bar_width,self.length*_bar_width,3), 255,dtype=np.uint8)
         for i in range(self.length):
             val = self.data[i]
+			# 因为各个数据柱子是紧紧挨着的，所以为了有区分度给相邻的各个数据柱子赋予不同的颜色
             figure[-1-val*_bar_width:, i*_bar_width:i*_bar_width+_bar_width] = self.GetColor(val, self.length)
         self._bar_width = _bar_width
         self.figure = figure
@@ -69,6 +72,7 @@ class DataSeq:
 
     @staticmethod
     def GetColor(val, TOTAL):
+		# 给不同的数据柱子赋予不同的颜色
         return (120+val*255//(2*TOTAL), 255-val*255//(2*TOTAL), 0)
 
     def _set_figure(self, idx, val):
